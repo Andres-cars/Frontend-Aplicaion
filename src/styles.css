@@ -1,1 +1,32 @@
+/* Global styles */
 /* You can add global styles to this file, and also import other style files */
+
+/* Header corporativo tipo SaaS (global) */
+:root{
+  --blue-900:#0a3672;
+  --blue-800:#0d47a1;
+  --blue-700:#1565c0;
+  --blue-600:#1976d2;
+  --green-600:#2e7d32;
+  --white:#fff; --text:#111827; --muted:#6b7280; --border:#e5e7eb;
+}
+
+.app-header{ height:70px; background: linear-gradient(90deg, var(--blue-900), var(--blue-700)); color:var(--white); box-shadow: 0 8px 20px rgba(0,0,0,.12); position: sticky; top:0; z-index: 1000; }
+.header-inner{ max-width:1160px; margin:0 auto; height:70px; padding:0 16px; display:flex; align-items:center; justify-content:space-between; }
+
+.brand{ display:flex; align-items:center; gap:12px; }
+.logo{ width:40px; height:40px; border-radius:50%; background:var(--white); color:var(--blue-900); display:flex; align-items:center; justify-content:center; font-weight:800; font-size:18px; box-shadow: 0 2px 10px rgba(0,0,0,.15); }
+.brand-text .title{ font-weight:800; letter-spacing:.2px; }
+.brand-text .subtitle{ font-size:12px; opacity:.9; margin-top:2px; }
+
+.nav{ display:flex; align-items:center; gap:12px; }
+.header-link{ color:var(--white); text-decoration:none; padding:10px 12px; border-radius:10px; transition: all .2s ease; border:1px solid transparent; }
+.header-link:hover{ background: rgba(255,255,255,.12); }
+.header-link-secondary{ opacity:.9; }
+
+.header-btn{ display:inline-flex; align-items:center; justify-content:center; padding:10px 16px; border-radius:10px; font-weight:700; cursor:pointer; border:1px solid transparent; transition: all .2s ease; text-decoration: none; }
+.header-btn-primary{ background: linear-gradient(90deg, var(--green-600), #43a047); color:var(--white); }
+.header-btn-primary:hover{ filter: brightness(1.05); transform: translateY(-1px); box-shadow: 0 10px 20px rgba(0,0,0,.12); }
+
+/* Responsive del header */
+@media (max-width: 720px){ .nav{ gap:8px; } .header-link{ padding:8px 10px; } .header-btn{ padding:8px 12px; } }

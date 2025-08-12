@@ -1,0 +1,146 @@
+/* Layout base y fondo */
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.login-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center; /* Centrado perfecto horizontal y vertical */
+  background: linear-gradient(160deg, #e6f5ea 0%, #ffffff 100%); /* Verde claro a blanco */
+  padding: 16px; /* resguardo para pantallas pequeñas */
+}
+
+/* Tarjeta */
+.login-card {
+  width: 100%;
+  max-width: 440px; /* tamaño mediano */
+  background-color: #ffffff;
+  border-radius: 16px; /* bordes redondeados */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12); /* sombra suave */
+  padding: 28px;
+}
+
+/* Título */
+.login-title {
+  margin: 0 0 18px 0;
+  text-align: center;
+  color: #105c3d; /* verde oscuro */
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 1.6rem;
+  font-weight: 700; /* tipografía moderna en negrita */
+}
+
+/* Formularios */
+.login-form {
+  display: grid;
+  gap: 14px;
+}
+
+/* Grupo de entrada con icono a la izquierda */
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #d9d9d9; /* borde gris claro */
+  border-radius: 12px; /* bordes redondeados */
+  padding: 10px 12px 10px 40px; /* espacio para el icono */
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.input-group:focus-within {
+  border-color: #9bcfb2; /* acento suave */
+  box-shadow: 0 0 0 4px rgba(155, 207, 178, 0.25);
+}
+
+.input-group .icon {
+  position: absolute;
+  left: 12px;
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  color: #7b8a82;
+}
+
+/* Inputs y selects */
+.input-group input,
+.select-group select {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 0.98rem;
+  color: #1e1e1e;
+  background: transparent;
+}
+
+.input-group input::placeholder {
+  color: #9aa4a0;
+}
+
+/* Select rol */
+.select-group {
+  display: grid;
+  gap: 6px;
+}
+
+.select-group label {
+  font-size: 0.9rem;
+  color: #2c3e35;
+}
+
+.select-group select {
+  padding: 12px 14px;
+  border: 1px solid #d9d9d9;
+  border-radius: 12px;
+  background: #ffffff;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.select-group select:focus {
+  border-color: #9bcfb2;
+  box-shadow: 0 0 0 4px rgba(155, 207, 178, 0.25);
+}
+
+/* Botón principal */
+.btn-primary {
+  display: inline-block;
+  width: 100%; /* ancho */
+  padding: 12px 16px;
+  background-color: #b07b52; /* marrón claro */
+  color: #ffffff; /* texto blanco */
+  border: none;
+  border-radius: 12px; /* bordes redondeados */
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.02s ease-in-out;
+}
+
+.btn-primary:hover {
+  background-color: #996a45; /* más oscuro en hover */
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+/* Error */
+.error {
+  margin-top: 10px;
+  color: #c62828;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 380px) {
+  .login-card {
+    padding: 20px;
+    border-radius: 14px;
+  }
+  .login-title {
+    font-size: 1.4rem;
+  }
+}
