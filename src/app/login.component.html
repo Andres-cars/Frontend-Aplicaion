@@ -1,0 +1,60 @@
+<div class="login-page">
+  <div class="login-card">
+    <h1 class="login-title">Página de Login</h1>
+
+    <!-- Paso 1: Credenciales -->
+    <form *ngIf="stage === 'credentials'" (ngSubmit)="login()" #loginForm="ngForm" class="login-form">
+      <div class="input-group">
+        <span class="icon" aria-hidden="true">
+          <!-- Email Icon (inline SVG) -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 4H4C2.895 4 2 4.895 2 6V18C2 19.105 2.895 20 4 20H20C21.105 20 22 19.105 22 18V6C22 4.895 21.105 4 20 4Z" stroke="#7B8A82" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M22 6L12.88 12.34C12.34 12.71 11.66 12.71 11.12 12.34L2 6" stroke="#7B8A82" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <input
+          type="email"
+          name="email"
+          [(ngModel)]="email"
+          placeholder="Correo electrónico"
+          required
+          autocomplete="email"
+        />
+      </div>
+
+      <div class="input-group">
+        <span class="icon" aria-hidden="true">
+          <!-- Lock Icon (inline SVG) -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="10" width="16" height="10" rx="2" stroke="#7B8A82" stroke-width="1.6"/>
+            <path d="M8 10V7C8 4.791 9.791 3 12 3C14.209 3 16 4.791 16 7V10" stroke="#7B8A82" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <input
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+          placeholder="Contraseña"
+          required
+          autocomplete="current-password"
+        />
+      </div>
+
+      <button type="submit" class="btn-primary">Entrar</button>
+    </form>
+
+    <!-- Paso 2: Selección de rol devuelto por backend -->
+    <form *ngIf="stage === 'role'" (ngSubmit)="continueWithRole()" #roleForm="ngForm" class="login-form">
+      <div class="select-group">
+        <label for="roleSelect">Seleccione su rol</label>
+        <select id="roleSelect" name="selectedRoleId" [(ngModel)]="selectedRoleId" required>
+          <option [ngValue]="null" disabled selected>Seleccione su rol</option>
+          <option *ngFor="let t of roles" [ngValue]="t.id">{{ t.type }}</option>
+        </select>
+      </div>
+      <button type="submit" class="btn-primary">Continuar</button>
+    </form>
+
+    <div *ngIf="error" class="error">{{ error }}</div>
+  </div>
+</div>

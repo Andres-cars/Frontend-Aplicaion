@@ -1,0 +1,51 @@
+<div class="profile">
+  <h2>Perfil de Persona</h2>
+
+  <div *ngIf="loading" class="info">Cargando...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div class="card" *ngIf="!loading && !error">
+    <form (ngSubmit)="save()">
+      <div class="grid">
+        <div>
+          <label>Cédula</label>
+          <input name="ci" [(ngModel)]="ci" placeholder="Ej: 0102030405" />
+        </div>
+        <div>
+          <label>Teléfono</label>
+          <input name="phone" [(ngModel)]="phone" placeholder="Ej: 0999999999" />
+        </div>
+        <div>
+          <label>Nombres</label>
+          <input name="name" [(ngModel)]="name" placeholder="Nombres" />
+        </div>
+        <div>
+          <label>Apellidos</label>
+          <input name="lastname" [(ngModel)]="lastname" placeholder="Apellidos" />
+        </div>
+        <div class="full">
+          <label>Dirección</label>
+          <input name="address" [(ngModel)]="address" placeholder="Dirección" />
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a routerLink="/users" class="btn">Volver</a>
+      </div>
+    </form>
+
+    <div class="uploader">
+      <div class="preview" *ngIf="previewUrl; else noimg">
+        <img [src]="previewUrl" alt="Foto" />
+      </div>
+      <ng-template #noimg>
+        <div class="placeholder">Sin imagen</div>
+      </ng-template>
+      <input type="file" (change)="onFileSelected($event)" />
+      <button class="btn" (click)="uploadImage()" [disabled]="!selectedFile">Subir imagen</button>
+    </div>
+  </div>
+
+  <div *ngIf="success" class="success">{{ success }}</div>
+</div>

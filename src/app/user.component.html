@@ -1,0 +1,48 @@
+<main class="profile-page">
+  <div *ngIf="loading" class="info">Cargando...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <section class="container" *ngIf="!loading && !error">
+    <!-- Card centrada del perfil -->
+    <article class="card">
+      <div class="card-header">
+        <div class="avatar">
+          <img *ngIf="photoUrl; else noimg" [src]="photoUrl" alt="Foto de perfil" />
+          <ng-template #noimg>
+            <div class="placeholder">{{ (fullName || 'U').charAt(0).toUpperCase() }}</div>
+          </ng-template>
+        </div>
+        <div class="identity">
+          <h1 class="name">{{ fullName || 'Usuario' }}</h1>
+          <div class="meta">
+            <span class="email">{{ currentEmail }}</span>
+            <span class="dot">•</span>
+            <span class="role" *ngIf="currentRole">{{ currentRole }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Información organizada en grid -->
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="label">Cédula</div>
+          <div class="value">{{ person?.ci || '—' }}</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Teléfono</div>
+          <div class="value">{{ person?.phone || '—' }}</div>
+        </div>
+        <div class="info-item full">
+          <div class="label">Dirección</div>
+          <div class="value">{{ person?.address || '—' }}</div>
+        </div>
+      </div>
+
+      <!-- Acciones -->
+      <div class="actions">
+        <button class="btn btn-primary" (click)="goToEdit()">Editar datos personales</button>
+        <button class="btn btn-outline" (click)="goToEdit()">Actualizar foto</button>
+      </div>
+    </article>
+  </section>
+</main>
