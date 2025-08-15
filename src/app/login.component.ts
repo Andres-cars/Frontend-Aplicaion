@@ -66,7 +66,15 @@ export class LoginComponent {
   private persistRoleAndContinue(role: { id: number; type: string }) {
     localStorage.setItem('selectedRoleId', String(role.id));
     localStorage.setItem('selectedRoleName', role.type);
-    this.router.navigate(['/users']);
+
+    const roleName = String(role.type || '').toLowerCase();
+    if (roleName.includes('docente') || roleName.includes('teacher')) {
+      // Docente: registrar y ver lista de tutorías
+      this.router.navigate(['/tutoring-demo']);
+    } else {
+      // Estudiante: ver listado de tutorías
+      this.router.navigate(['/tutorias']);
+    }
   }
 
   private fetchRolesAfterLogin() {
@@ -85,9 +93,10 @@ export class LoginComponent {
             this.stage = 'role';
           }
         } else {
-          this.router.navigate(['/users']);
+          // Si el backend no devuelve roles, por defecto a listado de estudiante
+          this.router.navigate(['/tutorias']);
         }
       })
-      .catch(() => this.router.navigate(['/users']));
+      .catch(() => this.router.navigate(['/tutorias']));
   }
 }
